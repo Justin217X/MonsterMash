@@ -1,9 +1,9 @@
 [gd_scene load_steps=2 format=3 uid="uid://deceqty7g1fq1"]
 
-[ext_resource type="PackedScene" uid="uid://njcxxj7cthj7" path="res://Player/player.tscn" id="1_jm0we"]
+[ext_resource type="PackedScene" uid="uid://tgug4o483k7x" path="res://Player/player.tscn" id="1_pwy3b"]
 
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 
-[node name="Player" parent="." instance=ExtResource("1_jm0we")]
+[node name="Player" parent="." instance=ExtResource("1_pwy3b")]
