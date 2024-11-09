@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var movement_speed = 40.0
+var movement_speed = 400.0
 
 func _process(delta):
 	movement()
