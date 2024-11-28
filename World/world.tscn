@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://deceqty7g1fq1"]
+[gd_scene load_steps=6 format=3 uid="uid://deceqty7g1fq1"]
 
 [ext_resource type="PackedScene" uid="uid://d1gjhqwn3oxaj" path="res://Player/player.tscn" id="1_pwy3b"]
 [ext_resource type="PackedScene" uid="uid://bxwyva332xtfk" path="res://Utility/enemy_spawner.tscn" id="2_kag20"]
@@ -13,14 +13,6 @@ enemy = ExtResource("4_y21iv")
 enemy_num = 1
 enemy_spawn_delay = 0
 
-[sub_resource type="Resource" id="Resource_05uo3"]
-script = ExtResource("3_h5bwr")
-time_start = 5
-time_end = 60
-enemy = ExtResource("4_y21iv")
-enemy_num = 10
-enemy_spawn_delay = 0
-
 [node name="World" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -28,4 +20,4 @@ enemy_spawn_delay = 0
 [node name="Player" parent="." instance=ExtResource("1_pwy3b")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_kag20")]
-spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_7adbp"), SubResource("Resource_05uo3")])
+spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_7adbp")])
