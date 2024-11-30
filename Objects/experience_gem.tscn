@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://0tdkfmm1y551"]
+
+[ext_resource type="Script" path="res://Objects/experience_gem.gd" id="1_8mxwk"]
+[ext_resource type="Texture2D" uid="uid://crsum41fhae7g" path="res://assets/green_gem.png" id="2_nwg5u"]
+
+[sub_resource type="Animation" id="Animation_3k6uu"]
+resource_name = "GemShine"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 0]
+}
+
+[sub_resource type="Animation" id="Animation_b6jsl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2aykn"]
+_data = {
+"GemShine": SubResource("Animation_3k6uu"),
+"RESET": SubResource("Animation_b6jsl")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_018rn"]
+size = Vector2(40, 40)
+
+[node name="ExperienceGem" type="Area2D" groups=["loot"]]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_8mxwk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.98023e-08, 0)
+scale = Vector2(3, 3)
+texture = ExtResource("2_nwg5u")
+vframes = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_2aykn")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_018rn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
