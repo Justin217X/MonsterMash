@@ -27,6 +27,11 @@ var enemy_close = []
 #GUI
 @onready var expBar = get_node("%ExperienceBar")
 @onready var lblLevel = get_node("%Label_Level")
+@onready var levelPanel = get_node("%LevelUp")
+@onready var upgradeOptions = get_node("%UpgradeOptions")
+@onready var itemOptions = preload("res://Utility/item_option.tscn")
+@onready var snd_LevelUp = get_node("%sound_levelup")
+
 
 func _ready():
 	attack()
@@ -105,10 +110,9 @@ func calculate_experience(gem_exp):
 	if experience + collected_experience >= exp_required: #check if level up
 		collected_experience -= exp_required - experience
 		experience_level += 1
-		lblLevel.text = str("Level: ", experience_level)
 		experience = 0
 		exp_required = calculate_experiencecap()
-		calculate_experience(0) # Required to Level Up multiple times with excess experience
+		levelup()
 	else:
 		experience += collected_experience
 		collected_experience = 0
@@ -129,3 +133,29 @@ func calculate_experiencecap():
 func set_expBar(set_value = 1, set_max_value = 100):
 	expBar.value = set_value
 	expBar.max_value = set_max_value
+
+# LevelUp Functions
+func levelup():
+	snd_LevelUp.play()
+	lblLevel.text = str("Level: ", experience_level)
+	var tween = levelPanel.create_tween()
+	#Animation for Level up to slide into the screen from the right
+	tween.tween_property(levelPanel, "position", Vector2(220, 50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN) 
+	tween.play()
+	levelPanel.visible = true #LevelPanel is invisible by default
+	var options = 0
+	var optionsmax = 3
+	while options < optionsmax: #Displays Options in LevelUpPanel on UpgradeOptions node
+		var option_choice = itemOptions.instantiate()
+		upgradeOptions.add_child(option_choice)
+		options += 1
+	get_tree().paused = true #Pauses game
+
+func upgrade_character(upgrade):
+	var option_chidren = upgradeOptions.get_children()
+	for i in option_chidren:
+		i.queue_free()
+	levelPanel.visible = false
+	levelPanel.position = Vector2(800, 50) #Move LevelUpPanel off screen
+	get_tree().paused = false
+	calculate_experience(0) # Required to Level Up multiple times with excess experience

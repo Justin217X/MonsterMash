@@ -1,14 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1gjhqwn3oxaj"]
+[gd_scene load_steps=11 format=3 uid="uid://d1gjhqwn3oxaj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7okhk"]
 [ext_resource type="Texture2D" uid="uid://cc5amojnwk0dk" path="res://icon.svg" id="2_52iq4"]
 [ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="3_pr3sp"]
 [ext_resource type="Texture2D" uid="uid://dh4gn31tywb3" path="res://assets/exp_background.png" id="4_r4gkh"]
 [ext_resource type="Texture2D" uid="uid://b0f7jvgjtk2f6" path="res://assets/exp_progress.png" id="5_cxs43"]
-[ext_resource type="Texture2D" uid="uid://uy5th1728in8" path="res://assets/ElderAsset1.2.png" id="6_vbv1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jeav"]
-size = Vector2(116, 117)
+size = Vector2(120, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnahh"]
 size = Vector2(95, 123)
@@ -22,6 +21,7 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_p38sh"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+scale = Vector2(0.25, 0.25)
 motion_mode = 1
 script = ExtResource("1_7okhk")
 
@@ -99,11 +99,34 @@ text = "Level: 1"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
+[node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
 visible = false
-texture = ExtResource("6_vbv1a")
-region_enabled = true
-region_rect = Rect2(10.2362, 477.133, 281.751, 59.8164)
+layout_mode = 0
+offset_left = 800.0
+offset_top = 50.0
+offset_right = 1000.0
+offset_bottom = 300.0
+
+[node name="Label_LevelUp" type="Label" parent="GUILayer/GUI/LevelUp"]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Level Up!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+
+[node name="sound_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
+unique_name_in_owner = true
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
 [connection signal="timeout" from="Attack/IceSpearTimer" to="." method="_on_ice_spear_timer_timeout"]
