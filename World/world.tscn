@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://deceqty7g1fq1"]
+[gd_scene load_steps=7 format=3 uid="uid://deceqty7g1fq1"]
 
 [ext_resource type="PackedScene" uid="uid://d1gjhqwn3oxaj" path="res://Player/player.tscn" id="1_pwy3b"]
 [ext_resource type="PackedScene" uid="uid://bxwyva332xtfk" path="res://Utility/enemy_spawner.tscn" id="2_kag20"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="3_h5bwr"]
 [ext_resource type="PackedScene" uid="uid://dsavthkl5jgqp" path="res://Enemy/enemy.tscn" id="4_y21iv"]
+[ext_resource type="PackedScene" uid="uid://0tdkfmm1y551" path="res://Objects/experience_gem.tscn" id="5_e541h"]
 
 [sub_resource type="Resource" id="Resource_7adbp"]
 script = ExtResource("3_h5bwr")
@@ -23,3 +24,7 @@ enemy_spawn_delay = 0
 spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_7adbp")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
+
+[node name="ExperienceGem" parent="Loot" instance=ExtResource("5_e541h")]
+position = Vector2(108, 5)
+experience = 10

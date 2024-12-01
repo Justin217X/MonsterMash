@@ -42,7 +42,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_018rn"]
-size = Vector2(40, 40)
+size = Vector2(14, 14)
 
 [node name="ExperienceGem" type="Area2D" groups=["loot"]]
 collision_layer = 8
@@ -51,7 +51,6 @@ script = ExtResource("1_8mxwk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.98023e-08, 0)
-scale = Vector2(3, 3)
 texture = ExtResource("2_nwg5u")
 vframes = 9
 
@@ -59,6 +58,7 @@ vframes = 9
 libraries = {
 "": SubResource("AnimationLibrary_2aykn")
 }
+autoplay = "GemShine"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_018rn")

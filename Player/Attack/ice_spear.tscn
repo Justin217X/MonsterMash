@@ -5,7 +5,7 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qwgs0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ywn4c"]
-size = Vector2(45, 244)
+size = Vector2(8.83883, 44.9123)
 
 [node name="IceSpear" type="Area2D" groups=["attack"]]
 top_level = true
@@ -17,11 +17,13 @@ script = ExtResource("1_wiwsr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 0.992157, 1)
 rotation = -0.785398
-scale = Vector2(44.25, 242.25)
+scale = Vector2(8, 43.796)
 texture = SubResource("PlaceholderTexture2D_qwgs0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.19209e-07, 1.19209e-07)
 rotation = -0.785398
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_ywn4c")
 
 [node name="Timer" type="Timer" parent="."]
