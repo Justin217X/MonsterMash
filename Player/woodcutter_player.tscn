@@ -1,50 +1,50 @@
-[gd_scene load_steps=23 format=3 uid="uid://d1gjhqwn3oxaj"]
+[gd_scene load_steps=23 format=3 uid="uid://bpv7yov6wrgnk"]
 
-[ext_resource type="Script" path="res://Player/player.gd" id="1_7okhk"]
-[ext_resource type="Texture2D" uid="uid://b1yx4vfc3tagm" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_idle.png" id="2_4n5x1"]
-[ext_resource type="Texture2D" uid="uid://0i1fo5ks64va" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_walk.png" id="3_dit5m"]
-[ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="3_pr3sp"]
-[ext_resource type="Texture2D" uid="uid://dh4gn31tywb3" path="res://assets/exp_background.png" id="4_r4gkh"]
-[ext_resource type="Texture2D" uid="uid://b0f7jvgjtk2f6" path="res://assets/exp_progress.png" id="5_cxs43"]
+[ext_resource type="Script" path="res://Player/player.gd" id="1_gx23i"]
+[ext_resource type="Texture2D" uid="uid://b1yx4vfc3tagm" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_idle.png" id="2_5827a"]
+[ext_resource type="Texture2D" uid="uid://0i1fo5ks64va" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_walk.png" id="3_w7c55"]
+[ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="4_w5g3r"]
+[ext_resource type="Texture2D" uid="uid://dh4gn31tywb3" path="res://assets/exp_background.png" id="5_s0utp"]
+[ext_resource type="Texture2D" uid="uid://b0f7jvgjtk2f6" path="res://assets/exp_progress.png" id="6_xsmjl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5a4j"]
-atlas = ExtResource("2_4n5x1")
+atlas = ExtResource("2_5827a")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t4e1l"]
-atlas = ExtResource("2_4n5x1")
+atlas = ExtResource("2_5827a")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qkgfd"]
-atlas = ExtResource("2_4n5x1")
+atlas = ExtResource("2_5827a")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o8hbd"]
-atlas = ExtResource("2_4n5x1")
+atlas = ExtResource("2_5827a")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ar4fl"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lmvcm"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ovv7"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7lmnb"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u08wu"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ijel0"]
-atlas = ExtResource("3_dit5m")
+atlas = ExtResource("3_w7c55")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4f2f5"]
@@ -108,7 +108,7 @@ radius = 50.0
 position = Vector2(12, -15)
 scale = Vector2(0.25, 0.25)
 motion_mode = 1
-script = ExtResource("1_7okhk")
+script = ExtResource("1_gx23i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(48, -48)
@@ -125,7 +125,7 @@ frame_progress = 0.675697
 visible = false
 shape = SubResource("RectangleShape2D_2jeav")
 
-[node name="HurtBox" parent="." instance=ExtResource("3_pr3sp")]
+[node name="HurtBox" parent="." instance=ExtResource("4_w5g3r")]
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
@@ -176,8 +176,8 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_right = 640.0
 offset_bottom = 360.0
-texture_under = ExtResource("4_r4gkh")
-texture_progress = ExtResource("5_cxs43")
+texture_under = ExtResource("5_s0utp")
+texture_progress = ExtResource("6_xsmjl")
 
 [node name="Label_Level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
 unique_name_in_owner = true

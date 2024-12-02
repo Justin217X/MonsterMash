@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://fkng3qr0jd43"]
+
+[ext_resource type="Texture2D" uid="uid://qh8em8gbme5d" path="res://assets/Sprites/PlayerCharacters/2 GraveRobber/GraveRobber_attack1.png" id="1_hb4ie"]
+[ext_resource type="Texture2D" uid="uid://ds5hlijsrqaa4" path="res://assets/Sprites/PlayerCharacters/2 GraveRobber/GraveRobber_idle.png" id="2_a6wcu"]
+[ext_resource type="Texture2D" uid="uid://bbopbjt6to50w" path="res://assets/Sprites/PlayerCharacters/2 GraveRobber/GraveRobber_run.png" id="3_uudef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hnn12"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3nkk1"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiu3y"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnw74"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w408s"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_711pe"]
+atlas = ExtResource("1_hb4ie")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxahh"]
+atlas = ExtResource("2_a6wcu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_023ku"]
+atlas = ExtResource("2_a6wcu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nwpgt"]
+atlas = ExtResource("2_a6wcu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0iwe5"]
+atlas = ExtResource("2_a6wcu")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mte3a"]
+atlas = ExtResource("3_uudef")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6hmg"]
+atlas = ExtResource("3_uudef")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bbjx"]
+atlas = ExtResource("3_uudef")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gam6d"]
+atlas = ExtResource("3_uudef")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rnnr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hnn12")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3nkk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiu3y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnw74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w408s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_711pe")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxahh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_023ku")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nwpgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0iwe5")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mte3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6hmg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bbjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gam6d")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_625of"]
+radius = 15.0
+height = 52.0
+
+[node name="SwordSmith" type="Node2D"]
+texture_filter = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(26, -28)
+scale = Vector2(2.08333, 2.16667)
+sprite_frames = SubResource("SpriteFrames_2rnnr")
+animation = &"Attack"
+frame = 5
+frame_progress = 0.350438
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, -12)
+shape = SubResource("CapsuleShape2D_625of")
