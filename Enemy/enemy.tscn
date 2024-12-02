@@ -1,11 +1,11 @@
 [gd_scene load_steps=30 format=3 uid="uid://dsavthkl5jgqp"]
 
 [ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_2iv0f"]
-[ext_resource type="Texture2D" uid="uid://cg2mmuspfqwqj" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Attack_1.png" id="2_7miib"]
+[ext_resource type="Texture2D" uid="uid://cipusk6dgkhg4" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Attack_1.png" id="2_7miib"]
 [ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="3_jfcag"]
-[ext_resource type="Texture2D" uid="uid://cwreyth45qrnk" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Idle.png" id="3_jr5wb"]
-[ext_resource type="Texture2D" uid="uid://cnludjgq4q2pi" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Dead.png" id="3_shjhc"]
-[ext_resource type="Texture2D" uid="uid://dt85qp6bkym4e" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Hurt.png" id="4_53sbd"]
+[ext_resource type="Texture2D" uid="uid://blsi2i8wy51by" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Idle.png" id="3_jr5wb"]
+[ext_resource type="Texture2D" uid="uid://c3lsnd4d7vo5v" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Dead.png" id="3_shjhc"]
+[ext_resource type="Texture2D" uid="uid://btpukxhwo11kv" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Hurt.png" id="4_53sbd"]
 [ext_resource type="PackedScene" uid="uid://cdhtocyxyibfu" path="res://Utility/hit_box.tscn" id="4_hm44c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dhtm3"]
@@ -176,10 +176,8 @@ script = ExtResource("1_2iv0f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_udi87")
-animation = &"Die"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 3
-frame_progress = 0.7666
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

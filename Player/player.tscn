@@ -1,8 +1,8 @@
 [gd_scene load_steps=23 format=3 uid="uid://d1gjhqwn3oxaj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7okhk"]
-[ext_resource type="Texture2D" uid="uid://b1yx4vfc3tagm" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_idle.png" id="2_4n5x1"]
-[ext_resource type="Texture2D" uid="uid://0i1fo5ks64va" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_walk.png" id="3_dit5m"]
+[ext_resource type="Texture2D" uid="uid://g3cef5jl6ki7" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_idle.png" id="2_4n5x1"]
+[ext_resource type="Texture2D" uid="uid://w8vqigm0r3ew" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_walk.png" id="3_dit5m"]
 [ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="3_pr3sp"]
 [ext_resource type="Texture2D" uid="uid://dh4gn31tywb3" path="res://assets/exp_background.png" id="4_r4gkh"]
 [ext_resource type="Texture2D" uid="uid://b0f7jvgjtk2f6" path="res://assets/exp_progress.png" id="5_cxs43"]
@@ -104,7 +104,7 @@ radius = 50.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p38sh"]
 
-[node name="Woodcutter" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(12, -15)
 scale = Vector2(0.25, 0.25)
 motion_mode = 1

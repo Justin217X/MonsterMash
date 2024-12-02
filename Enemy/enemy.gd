@@ -15,6 +15,8 @@ var exp_gem = preload("res://Objects/experience_gem.tscn")
 
 signal remove_from_array(object)
 
+func _ready() -> void:
+	pass
 
 func _physics_process(_delta):
 	knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
