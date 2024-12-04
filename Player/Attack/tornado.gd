@@ -42,8 +42,10 @@ func _ready():
 	angle_less = global_position.direction_to(move_to_less)
 	angle_more = global_position.direction_to(move_to_more)
 	
+	#starts small then grows to normal size
 	var initial_tween = create_tween().set_parallel(true)
 	initial_tween.tween_property(self, "scale", Vector2(1, 1) * attack_size, 3).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
+	#speeds up as it goes
 	var final_speed = speed
 	speed = speed / 5.0
 	initial_tween.tween_property(self, "speed", final_speed, 6).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT)
@@ -73,5 +75,5 @@ func _physics_process(delta: float) -> void:
 	position += angle * speed * delta
 
 func _on_timer_timeout() -> void:
-	emit_signal("remove_from_array")
+	emit_signal("remove_from_array", self)
 	queue_free()
