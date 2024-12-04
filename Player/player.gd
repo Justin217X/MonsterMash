@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-var movement_speed = 400.0
+var movement_speed = 40.0
 var hp = 80
 var last_movement = Vector2.UP
 
@@ -12,24 +12,30 @@ var collected_experience = 0
 # Attacks
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
+var flyingSword = preload("res://Player/Attack/flying_sword.tscn")
 
 # AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
 @onready var iceSpearAttackTimer = get_node("%IceSpearAttackTimer")
 @onready var tornadoTimer = get_node("%TornadoTimer")
 @onready var tornadoAttackTimer = get_node("%TorandoAttackTimer")
+@onready var flyingSwordBase = get_node("%FlyingSwordBase")
 
 # Ice Spear
 var icespear_ammo = 0
 var icespear_baseammo = 1
 var icespear_attackspeed = 1.5
-var icespear_level = 0 # Level has to be 1 in order to use.
+var icespear_level = 0 #Level has to be 1 in order to use.
 
 # Tornado
 var tornado_ammo = 0
 var tornado_baseammo = 1
 var tornado_attackspeed = 3
-var tornado_level = 1
+var tornado_level = 0 #Level has to be 1 in order to use.
+
+# Flying Sword
+var flyingsword_ammo = 1
+var flyingsword_level = 1
 
 #Enemy Related
 var enemy_close = []
@@ -46,8 +52,6 @@ var enemy_close = []
 func _ready():
 	attack()
 	set_expBar(experience, calculate_experiencecap())
-	
-
 
 func _physics_process(delta):
 	movement()
@@ -72,6 +76,8 @@ func attack() -> void:
 		tornadoTimer.wait_time = tornado_attackspeed
 		if tornadoTimer.is_stopped():
 			tornadoTimer.start()
+	if flyingsword_level > 0:
+		spawn_flyingsword()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback) -> void:
 	hp -= damage
@@ -114,6 +120,15 @@ func _on_torando_attack_timer_timeout() -> void:
 		else:
 			tornadoAttackTimer.stop()
 
+
+func spawn_flyingsword():
+	var get_flyingsword_total = flyingSwordBase.get_child_count()
+	var calc_spawns = flyingsword_ammo - get_flyingsword_total
+	while calc_spawns > 0:
+		var flyingsword_spawn = flyingSword.instantiate()
+		flyingsword_spawn.global_position = global_position
+		flyingSwordBase.add_child(flyingsword_spawn)
+		calc_spawns -= 1
 
 func get_random_target(): # This should be temporary. We should target closest.
 	if enemy_close.size() > 0:
