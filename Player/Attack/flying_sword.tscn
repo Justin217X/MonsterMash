@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cobi3saxoju1f"]
+[gd_scene load_steps=5 format=3 uid="uid://cobi3saxoju1f"]
 
 [ext_resource type="Script" path="res://Player/Attack/flying_sword.gd" id="1_f7nkr"]
+[ext_resource type="AudioStream" uid="uid://nfw3lmgchp21" path="res://assets/Sounds/synth.wav" id="2_qbmil"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_lhkc7"]
 
@@ -20,7 +21,6 @@ texture = SubResource("CanvasTexture_lhkc7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kvnsb")
 disabled = true
 
@@ -39,6 +39,7 @@ wait_time = 3.0
 autostart = true
 
 [node name="sound_attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qbmil")
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]

@@ -85,6 +85,7 @@ func enable_attack(atk = true):
 	if atk:
 		collision.call_deferred("set", "disabled", false)
 		#sprite.texture = sprite_flysword_attack
+		$sound_attack.play()
 	else:
 		collision.call_deferred("set", "disabled", true)
 		#sprite.texture = sprite_flysword_regular
