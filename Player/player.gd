@@ -5,6 +5,7 @@ var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
 var last_movement = Vector2.UP
+var time = 0
 
 var experience = 0
 var experience_level = 1
@@ -21,6 +22,7 @@ var flyingSword = preload("res://Player/Attack/flying_sword.tscn")
 @onready var tornadoTimer = get_node("%TornadoTimer")
 @onready var tornadoAttackTimer = get_node("%TorandoAttackTimer")
 @onready var flyingSwordBase = get_node("%FlyingSwordBase")
+@onready var healthBar = get_node("%HealthBar")
 
 # UPGRADES
 var collected_upgrades = []
@@ -57,12 +59,17 @@ var enemy_close = []
 @onready var upgradeOptions = get_node("%UpgradeOptions")
 @onready var itemOptions = preload("res://Utility/item_option.tscn")
 @onready var snd_LevelUp = get_node("%sound_levelup")
+@onready var lblTimer = get_node("%Label_Timer")
+@onready var collectedWeapons = get_node("%CollectedWeapons")
+@onready var collectedUpgrades = get_node("%CollectedUpgrades")
+@onready var itemContainer = preload("res://Player/GUI/item_container.tscn")
 
 
 func _ready():
-	upgrade_character("flyingsword1")
+	upgrade_character("icespear1")
 	attack()
 	set_expBar(experience, calculate_experiencecap())
+	_on_hurt_box_hurt(0, 0, 0)
 
 func _physics_process(delta):
 	movement()
@@ -92,7 +99,8 @@ func attack() -> void:
 
 func _on_hurt_box_hurt(damage, _angle, _knockback) -> void:
 	hp -= clamp(damage - armor, 1.0, 999.0)
-	print(hp)
+	healthBar.max_value = maxhp
+	healthBar.value = hp
 
 
 func _on_ice_spear_timer_timeout() -> void:
@@ -269,6 +277,7 @@ func upgrade_character(upgrade):
 			hp = clamp(hp, 0, maxhp)
 	
 	attack()
+	update_gui_collection(upgrade)
 	var option_chidren = upgradeOptions.get_children()
 	for i in option_chidren:
 		i.queue_free()
@@ -303,3 +312,30 @@ func get_random_item(): #Chooses eligible items from the database
 		return randomItem
 	else:
 		return null
+
+func change_time(argtime = 0):
+	time = argtime
+	var get_minutes = int(time / 60.0)
+	var get_seconds = time % 60
+	if get_minutes < 10:
+		get_minutes = str(0, get_minutes)
+	if get_seconds < 10:
+		get_seconds = str(0, get_seconds)
+	lblTimer.text = str(get_minutes, ":", get_seconds)
+
+func update_gui_collection(upgrade):
+	var get_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"]
+	var get_type = UpgradeDb.UPGRADES[upgrade]["type"]
+	if get_type != "item":
+		var get_collected_displaynames = []
+		for i in collected_upgrades:
+			get_collected_displaynames.append(UpgradeDb.UPGRADES[i]["displayname"])
+		if not get_displayname in get_collected_displaynames:
+			var new_item = itemContainer.instantiate()
+			new_item.upgrade = upgrade
+			match get_type:
+				"weapon":
+					collectedWeapons.add_child(new_item)
+				"upgrade":
+					collectedUpgrades.add_child(new_item)
+	
