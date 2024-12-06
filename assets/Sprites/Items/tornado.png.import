@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bynqcfk0nfguc"
-path="res://.godot/imported/tornado.png-7624a23f9994da29884aaaea68200181.ctex"
+path="res://.godot/imported/tornado.png-9069b4e8cc5e75a4f3fca7a8a17e64c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprites/Items/Weapons/tornado.png"
-dest_files=["res://.godot/imported/tornado.png-7624a23f9994da29884aaaea68200181.ctex"]
+source_file="res://assets/Sprites/Items/tornado.png"
+dest_files=["res://.godot/imported/tornado.png-9069b4e8cc5e75a4f3fca7a8a17e64c2.ctex"]
 
 [params]
 

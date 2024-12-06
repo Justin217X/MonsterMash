@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://byqov4mtfjh8a"]
 
-[ext_resource type="Texture2D" uid="uid://bynqcfk0nfguc" path="res://assets/Sprites/Items/Weapons/tornado.png" id="1_4vt51"]
+[ext_resource type="Texture2D" uid="uid://bynqcfk0nfguc" path="res://assets/Sprites/Items/tornado.png" id="1_4vt51"]
 [ext_resource type="Script" path="res://Player/Attack/tornado.gd" id="1_dqvv2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_miefo"]

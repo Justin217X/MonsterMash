@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://d2ec4hu4q213r" path="res://scene/player.tscn" id="1_mpa65"]
 [ext_resource type="Texture2D" uid="uid://8mi7wpybllja" path="res://assets/tileset_c_1.png" id="1_qkfe8"]
-[ext_resource type="Shader" path="res://scene/world.tres" id="2_pgbwd"]
+[ext_resource type="Shader" uid="uid://dqcpij1sbivyg" path="res://scene/world.tres" id="2_pgbwd"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pyc8e"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sqhfn"]
 texture = ExtResource("1_qkfe8")
 0:0/0 = 0
 1:0/0 = 0
@@ -220,17 +220,17 @@ texture = ExtResource("1_qkfe8")
 5:19/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_lmscs"]
-sources/0 = SubResource("TileSetAtlasSource_pyc8e")
+sources/0 = SubResource("TileSetAtlasSource_sqhfn")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_sf0yv"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_2gyk0"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_u7xek"]
 seamless = true
 noise = SubResource("FastNoiseLite_sf0yv")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0vjcf"]
 shader = ExtResource("2_pgbwd")
-shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_2gyk0")
+shader_parameter/tex_frg_2 = SubResource("NoiseTexture2D_u7xek")
 
 [sub_resource type="Environment" id="Environment_5mcof"]
 background_mode = 3
