@@ -40,9 +40,33 @@ func update_flyingsword():
 			speed = 200.0
 			damage = 10
 			knockback_amount = 100
+			paths = 1
+			attack_size = 1.0 * (1 + player.spell_size)
+			attack_speed = 5.0 * (1 - player.spell_cooldown)
+		2:
+			hp = 9999
+			speed = 200.0
+			damage = 10
+			knockback_amount = 100
+			paths = 2 #Attack an additional enemy per attack
+			attack_size = 1.0 * (1 + player.spell_size)
+			attack_speed = 5.0 * (1 - player.spell_cooldown)
+		3:
+			hp = 9999
+			speed = 200.0
+			damage = 10
+			knockback_amount = 100
+			paths = 3 #Attack an additional enemy per attack
+			attack_size = 1.0 * (1 + player.spell_size)
+			attack_speed = 5.0 * (1 - player.spell_cooldown)
+		4:
+			hp = 9999
+			speed = 200.0
+			damage = 15 # +5 damage
+			knockback_amount = 120 # +20% knockback
 			paths = 3
-			attack_size = 1.0
-			attack_speed = 4.0
+			attack_size = 1.0 * (1 + player.spell_size)
+			attack_speed = 5.0 * (1 - player.spell_cooldown)
 	
 	scale = Vector2(1.0, 1.0) * attack_size
 	attackTimer.wait_time = attack_speed
@@ -85,7 +109,7 @@ func enable_attack(atk = true):
 	if atk:
 		collision.call_deferred("set", "disabled", false)
 		#sprite.texture = sprite_flysword_attack
-		$sound_attack.play()
+		snd_attack.play()
 	else:
 		collision.call_deferred("set", "disabled", true)
 		#sprite.texture = sprite_flysword_regular
