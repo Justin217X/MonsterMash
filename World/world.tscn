@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://0tdkfmm1y551" path="res://Objects/experience_gem.tscn" id="5_e541h"]
 [ext_resource type="Texture2D" uid="uid://8mi7wpybllja" path="res://assets/tileset_c_1.png" id="6_jpntv"]
 [ext_resource type="AudioStream" uid="uid://cobi2ir402idt" path="res://assets/Sounds/OCT_26_2018_Harmorx2_Warplanets_game_loop_harmorX3_jungle_scene_music.ogg" id="6_ywvlj"]
-[ext_resource type="Shader" uid="uid://bta41j2g7i3on" path="res://scene/world.tres" id="7_4htsy"]
+[ext_resource type="Shader" uid="uid://bta41j2g7i3on" path="res://World/world.tres" id="7_4htsy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n626t"]
 texture = ExtResource("6_jpntv")
