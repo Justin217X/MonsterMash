@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var movement_speed = 40.0
 var hp = 80
+var maxhp = 80
 var last_movement = Vector2.UP
 
 var experience = 0
@@ -21,21 +22,30 @@ var flyingSword = preload("res://Player/Attack/flying_sword.tscn")
 @onready var tornadoAttackTimer = get_node("%TorandoAttackTimer")
 @onready var flyingSwordBase = get_node("%FlyingSwordBase")
 
+# UPGRADES
+var collected_upgrades = []
+var upgrade_options = []
+var armor = 0
+var speed = 0
+var spell_cooldown = 0
+var spell_size = 0
+var additional_attacks = 0
+
 # Ice Spear
 var icespear_ammo = 0
-var icespear_baseammo = 1
+var icespear_baseammo = 0
 var icespear_attackspeed = 1.5
 var icespear_level = 0 #Level has to be 1 in order to use.
 
 # Tornado
 var tornado_ammo = 0
-var tornado_baseammo = 1
+var tornado_baseammo = 0
 var tornado_attackspeed = 3
 var tornado_level = 0 #Level has to be 1 in order to use.
 
 # Flying Sword
-var flyingsword_ammo = 1
-var flyingsword_level = 1
+var flyingsword_ammo = 0
+var flyingsword_level = 0 #Level has to be 1 in order to use.
 
 #Enemy Related
 var enemy_close = []
@@ -50,6 +60,7 @@ var enemy_close = []
 
 
 func _ready():
+	upgrade_character("flyingsword1")
 	attack()
 	set_expBar(experience, calculate_experiencecap())
 
@@ -69,23 +80,23 @@ func movement() -> void:
 
 func attack() -> void:
 	if icespear_level > 0:
-		iceSpearTimer.wait_time = icespear_attackspeed
+		iceSpearTimer.wait_time = icespear_attackspeed * (1 - spell_cooldown)
 		if iceSpearTimer.is_stopped():
 			iceSpearTimer.start()
 	if tornado_level > 0:
-		tornadoTimer.wait_time = tornado_attackspeed
+		tornadoTimer.wait_time = tornado_attackspeed * (1 - spell_cooldown)
 		if tornadoTimer.is_stopped():
 			tornadoTimer.start()
 	if flyingsword_level > 0:
 		spawn_flyingsword()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback) -> void:
-	hp -= damage
+	hp -= clamp(damage - armor, 1.0, 999.0)
 	print(hp)
 
 
 func _on_ice_spear_timer_timeout() -> void:
-	icespear_ammo += icespear_baseammo
+	icespear_ammo += icespear_baseammo + additional_attacks
 	iceSpearAttackTimer.start()
 
 
@@ -104,7 +115,7 @@ func _on_ice_spear_attack_timer_timeout() -> void:
 
 
 func _on_tornado_timer_timeout() -> void:
-	tornado_ammo += tornado_baseammo
+	tornado_ammo += tornado_baseammo + additional_attacks
 	tornadoAttackTimer.start()
 
 func _on_torando_attack_timer_timeout() -> void:
@@ -123,12 +134,17 @@ func _on_torando_attack_timer_timeout() -> void:
 
 func spawn_flyingsword():
 	var get_flyingsword_total = flyingSwordBase.get_child_count()
-	var calc_spawns = flyingsword_ammo - get_flyingsword_total
+	var calc_spawns = (flyingsword_ammo + additional_attacks) - get_flyingsword_total
 	while calc_spawns > 0:
 		var flyingsword_spawn = flyingSword.instantiate()
 		flyingsword_spawn.global_position = global_position
 		flyingSwordBase.add_child(flyingsword_spawn)
 		calc_spawns -= 1
+	#Update Flying Sword
+	var get_flyingswords = flyingSwordBase.get_children()
+	for i in get_flyingswords:
+		if i.has_method("update_flyingsword"):
+			i.update_flyingsword()
 
 func get_random_target(): # This should be temporary. We should target closest.
 	if enemy_close.size() > 0:
@@ -140,7 +156,6 @@ func get_random_target(): # This should be temporary. We should target closest.
 func _on_enemy_detection_area_body_entered(body: Node2D) -> void:
 	if not enemy_close.has(body):
 		enemy_close.append(body)
-
 
 func _on_enemy_detection_area_body_exited(body: Node2D) -> void:
 	if enemy_close.has(body):
@@ -155,6 +170,7 @@ func _on_collect_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("loot"):
 		var gem_exp = area.collect()
 		calculate_experience(gem_exp)
+
 
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experiencecap()
@@ -199,15 +215,91 @@ func levelup():
 	var optionsmax = 3
 	while options < optionsmax: #Displays Options in LevelUpPanel on UpgradeOptions node
 		var option_choice = itemOptions.instantiate()
+		option_choice.item = get_random_item()
 		upgradeOptions.add_child(option_choice)
 		options += 1
 	get_tree().paused = true #Pauses game
 
 func upgrade_character(upgrade):
+	match upgrade:
+		"icespear1":
+			icespear_level = 1
+			icespear_baseammo += 1
+		"icespear2":
+			icespear_level = 2
+			icespear_baseammo += 1
+		"icespear3":
+			icespear_level = 3
+		"icespear4":
+			icespear_level = 4
+			icespear_baseammo += 2
+		"tornado1":
+			tornado_level = 1
+			tornado_baseammo += 1
+		"tornado2":
+			tornado_level = 2
+			tornado_baseammo += 1
+		"tornado3":
+			tornado_level = 3
+			tornado_attackspeed -= 0.5
+		"tornado4":
+			tornado_level = 4
+			tornado_baseammo += 1
+		"flyingsword1":
+			flyingsword_level = 1
+			flyingsword_ammo = 1
+		"flyingsword2":
+			flyingsword_level = 2
+		"flyingsword3":
+			flyingsword_level = 3
+		"flyingsword4":
+			flyingsword_level = 4
+		"armor1","armor2","armor3","armor4":
+			armor += 1
+		"boots1","boots2","boots3","boots4":
+			movement_speed += 20.0
+		"tome1","tome2","tome3","tome4":
+			spell_size += 0.10
+		"hourglass1","hourglass2","hourglass3","hourglass4":
+			spell_cooldown += 0.05
+		"ring1","ring2":
+			additional_attacks += 1
+		"food":
+			hp += 20
+			hp = clamp(hp, 0, maxhp)
+	
+	attack()
 	var option_chidren = upgradeOptions.get_children()
 	for i in option_chidren:
 		i.queue_free()
+	upgrade_options.clear() #Clear the array of options after making a choice
+	collected_upgrades.append(upgrade)
 	levelPanel.visible = false
 	levelPanel.position = Vector2(800, 50) #Move LevelUpPanel off screen
 	get_tree().paused = false
-	calculate_experience(0) # Required to Level Up multiple times with excess experience
+	calculate_experience(0) #Required to Level Up multiple times with excess experience
+
+func get_random_item(): #Chooses eligible items from the database
+	var dblist = []
+	for i in UpgradeDb.UPGRADES: #Determines eligibility
+		if i in collected_upgrades: #Find already collected upgrades
+			pass
+		elif i in upgrade_options: #If the upgrade is already an option
+			pass
+		elif UpgradeDb.UPGRADES[i]["type"] == "item": #Dont pick food
+			pass
+		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #check for prerequisites
+			var to_add = true
+			for n in UpgradeDb.UPGRADES[i]["prerequisite"]:
+				if not n in collected_upgrades:
+					to_add = false
+			if to_add == true: #A fix so that if there are multiple prequisites then it wont add multiple times
+				dblist.append(i)
+		else:
+			dblist.append(i)
+	if dblist.size() > 0:
+		var randomItem = dblist.pick_random()
+		upgrade_options.append(randomItem)
+		return randomItem
+	else:
+		return null
