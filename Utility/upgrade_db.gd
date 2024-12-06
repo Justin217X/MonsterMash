@@ -132,7 +132,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"boots1": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "boot.png",
 		"displayname": "Boots",
 		"details": "Increases Movement Speed by 50% of base speed",
 		"level": "Level: 1",
@@ -140,7 +140,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"boots2": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "boot.png",
 		"displayname": "Boots",
 		"details": "Increases Movement Speed by an additional 50%", #of base speed
 		"level": "Level: 2",
@@ -148,7 +148,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"boots3": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "boot.png",
 		"displayname": "Boots",
 		"details": "Increases Movement Speed by an additional 50%", #of base speed
 		"level": "Level: 3",
@@ -156,7 +156,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"boots4": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "boot.png",
 		"displayname": "Boots",
 		"details": "Increases Movement Speed by an additional 50%", #of base speed
 		"level": "Level: 4",
@@ -164,7 +164,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome1": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "tome.png",
 		"displayname": "Tome",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 1",
@@ -172,7 +172,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome2": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "tome.png",
 		"displayname": "Tome",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 2",
@@ -180,7 +180,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome3": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "tome.png",
 		"displayname": "Tome",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 3",
@@ -188,7 +188,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"tome4": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "tome.png",
 		"displayname": "Tome",
 		"details": "Increases the size of spells an additional 10% of their base size",
 		"level": "Level: 4",
@@ -196,7 +196,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"hourglass1": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "hourglass.png",
 		"displayname": "Hourglass",
 		"details": "Decreases spell cooldown by 5%", #of their base time
 		"level": "Level: 1",
@@ -204,7 +204,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"hourglass2": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "hourglass.png",
 		"displayname": "Hourglass",
 		"details": "Decreases spell cooldown by an additional 5%", #of their base time
 		"level": "Level: 2",
@@ -212,7 +212,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"hourglass3": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "hourglass.png",
 		"displayname": "Hourglass",
 		"details": "Decreases spell cooldown by an additional 5%", #of their base time
 		"level": "Level: 3",
@@ -220,7 +220,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"hourglass4": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "hourglass.png",
 		"displayname": "Hourglass",
 		"details": "Decreases spell cooldown by an additional 5%", #of their base time
 		"level": "Level: 4",
@@ -228,7 +228,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"ring1": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "ring.png",
 		"displayname": "Ring",
 		"details": "Spells now spawn 1 more additional attack",
 		"level": "Level: 1",
@@ -236,7 +236,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"ring2": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "ring.png",
 		"displayname": "Ring",
 		"details": "Spells now spawn an additional attack",
 		"level": "Level: 2",
@@ -244,7 +244,7 @@ const UPGRADES = {
 		"type": "upgrade"
 	},
 	"food": {
-		"icon": ICON_PATH + "", #HERE
+		"icon": ICON_PATH + "meat.png",
 		"displayname": "Food",
 		"details": "Heals you for 20 health",
 		"level": "N/A",
