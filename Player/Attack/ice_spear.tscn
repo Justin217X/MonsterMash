@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cjuxgj7olvdcj"]
 
 [ext_resource type="Script" path="res://Player/Attack/ice_spear.gd" id="1_wiwsr"]
-[ext_resource type="AudioStream" uid="uid://dvb0hpkue4l1h" path="res://assets/Sounds/laserShoot.wav" id="2_uudl0"]
+[ext_resource type="AudioStream" uid="uid://bj7tvauvsgluq" path="res://assets/Sounds/ice-hit-ground-01.wav" id="2_8c4qb"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qwgs0"]
 
@@ -32,6 +32,8 @@ one_shot = true
 autostart = true
 
 [node name="sound_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_uudl0")
+stream = ExtResource("2_8c4qb")
+volume_db = -31.2
+autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

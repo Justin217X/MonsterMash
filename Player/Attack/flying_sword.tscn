@@ -40,6 +40,7 @@ autostart = true
 
 [node name="sound_attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_qbmil")
+volume_db = -35.162
 
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="ChangeDirection" to="." method="_on_change_direction_timeout"]
