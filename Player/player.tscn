@@ -116,10 +116,8 @@ script = ExtResource("1_7okhk")
 position = Vector2(48, -48)
 scale = Vector2(6.08333, 5.58333)
 sprite_frames = SubResource("SpriteFrames_4f2f5")
-animation = &"Idle"
+animation = &"Walking"
 autoplay = "Idle"
-frame = 2
-frame_progress = 0.675697
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

@@ -1,0 +1,141 @@
+[gd_scene load_steps=20 format=3 uid="uid://dn1xis3q8vx8a"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_4a2cp"]
+[ext_resource type="Texture2D" uid="uid://dphdqqsvn2mvx" path="res://assets/Sprites/Enemies/Werewolves/Black_Werewolf/walk.png" id="2_fd7vc"]
+[ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="6_o5qsn"]
+[ext_resource type="PackedScene" uid="uid://cdhtocyxyibfu" path="res://Utility/hit_box.tscn" id="7_asgx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyeqq"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(0, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlu8b"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(129, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcx76"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(258, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47kd2"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(387, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_shu85"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(516, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f353l"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(645, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idsfa"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(774, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4mi4"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(903, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djvg7"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(1032, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3clsu"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(1161, 46, 108, 82)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rw5ap"]
+atlas = ExtResource("2_fd7vc")
+region = Rect2(1290, 46, 108, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frbi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyeqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlu8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcx76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47kd2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_shu85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f353l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idsfa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4mi4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djvg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3clsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rw5ap")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yngk0"]
+radius = 18.0
+height = 76.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v5yx"]
+size = Vector2(40, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg5pc"]
+size = Vector2(40, 72)
+
+[node name="enemy_werewolf" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.75, 0.75)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_4a2cp")
+movement_speed = 40.0
+hp = 300
+experience = 100
+damage = 8
+knockback_recovery = 20.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_frbi8")
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 2)
+shape = SubResource("CapsuleShape2D_yngk0")
+
+[node name="HurtBox" parent="." instance=ExtResource("6_o5qsn")]
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+position = Vector2(10, 4)
+shape = SubResource("RectangleShape2D_0v5yx")
+
+[node name="HitBox" parent="." instance=ExtResource("7_asgx5")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(12, 4)
+shape = SubResource("RectangleShape2D_tg5pc")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

@@ -1,14 +1,17 @@
-[gd_scene load_steps=18 format=4 uid="uid://deceqty7g1fq1"]
+[gd_scene load_steps=28 format=4 uid="uid://deceqty7g1fq1"]
 
 [ext_resource type="PackedScene" uid="uid://d1gjhqwn3oxaj" path="res://Player/player.tscn" id="1_pwy3b"]
 [ext_resource type="PackedScene" uid="uid://bxwyva332xtfk" path="res://Utility/enemy_spawner.tscn" id="2_kag20"]
 [ext_resource type="Script" path="res://Utility/spawn_info.gd" id="3_h5bwr"]
-[ext_resource type="PackedScene" uid="uid://dsavthkl5jgqp" path="res://Enemy/enemy.tscn" id="4_y21iv"]
 [ext_resource type="PackedScene" uid="uid://0tdkfmm1y551" path="res://Objects/experience_gem.tscn" id="5_e541h"]
 [ext_resource type="Texture2D" uid="uid://8mi7wpybllja" path="res://assets/tileset_c_1.png" id="6_jpntv"]
+[ext_resource type="PackedScene" uid="uid://dsavthkl5jgqp" path="res://Enemy/enemy_skeleton_weak.tscn" id="6_qn1da"]
 [ext_resource type="AudioStream" uid="uid://cobi2ir402idt" path="res://assets/Sounds/OCT_26_2018_Harmorx2_Warplanets_game_loop_harmorX3_jungle_scene_music.ogg" id="6_ywvlj"]
 [ext_resource type="Shader" uid="uid://bta41j2g7i3on" path="res://World/world.tres" id="7_4htsy"]
-[ext_resource type="AudioStream" uid="uid://dnxx07fud8vjs" path="res://assets/Sounds/pickupCoin.wav" id="8_qrrfi"]
+[ext_resource type="PackedScene" uid="uid://cgg8xrns7k0kk" path="res://Enemy/enemy_gorgon.tscn" id="7_gwp4u"]
+[ext_resource type="PackedScene" uid="uid://dn1xis3q8vx8a" path="res://Enemy/enemy_werewolf.tscn" id="8_u7aqp"]
+[ext_resource type="PackedScene" uid="uid://cxr1oaoxf8qpy" path="res://Enemy/enemy_skeleton_strong.tscn" id="9_4pm5i"]
+[ext_resource type="PackedScene" uid="uid://jgtwl57mq76i" path="res://Enemy/enemy_werewolf_boss.tscn" id="10_yt6t4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_n626t"]
 texture = ExtResource("6_jpntv")
@@ -243,20 +246,76 @@ background_mode = 3
 tonemap_mode = 3
 adjustment_enabled = true
 
-[sub_resource type="Resource" id="Resource_7adbp"]
+[sub_resource type="Resource" id="Resource_ds8ni"]
 script = ExtResource("3_h5bwr")
 time_start = 0
-time_end = 5
-enemy = ExtResource("4_y21iv")
+time_end = 30
+enemy = ExtResource("6_qn1da")
 enemy_num = 1
 enemy_spawn_delay = 0
 
-[sub_resource type="Resource" id="Resource_4blmu"]
+[sub_resource type="Resource" id="Resource_wcrpj"]
 script = ExtResource("3_h5bwr")
-time_start = 5
-time_end = 60
-enemy = ExtResource("4_y21iv")
-enemy_num = 5
+time_start = 30
+time_end = 201
+enemy = ExtResource("6_qn1da")
+enemy_num = 2
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_6p5p6"]
+script = ExtResource("3_h5bwr")
+time_start = 60
+time_end = 180
+enemy = ExtResource("9_4pm5i")
+enemy_num = 1
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_scmr4"]
+script = ExtResource("3_h5bwr")
+time_start = 180
+time_end = 210
+enemy = ExtResource("7_gwp4u")
+enemy_num = 1
+enemy_spawn_delay = 2
+
+[sub_resource type="Resource" id="Resource_l1v80"]
+script = ExtResource("3_h5bwr")
+time_start = 210
+time_end = 240
+enemy = ExtResource("9_4pm5i")
+enemy_num = 2
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_qwr72"]
+script = ExtResource("3_h5bwr")
+time_start = 240
+time_end = 270
+enemy = ExtResource("7_gwp4u")
+enemy_num = 1
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_attup"]
+script = ExtResource("3_h5bwr")
+time_start = 240
+time_end = 242
+enemy = ExtResource("8_u7aqp")
+enemy_num = 3
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_svcpy"]
+script = ExtResource("3_h5bwr")
+time_start = 270
+time_end = 300
+enemy = ExtResource("9_4pm5i")
+enemy_num = 4
+enemy_spawn_delay = 0
+
+[sub_resource type="Resource" id="Resource_ao4p0"]
+script = ExtResource("3_h5bwr")
+time_start = 301
+time_end = 303
+enemy = ExtResource("10_yt6t4")
+enemy_num = 1
 enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
@@ -287,7 +346,7 @@ environment = SubResource("Environment_707ka")
 position = Vector2(0, 0)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_kag20")]
-spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_7adbp"), SubResource("Resource_4blmu")])
+spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_ds8ni"), SubResource("Resource_wcrpj"), SubResource("Resource_6p5p6"), SubResource("Resource_scmr4"), SubResource("Resource_l1v80"), SubResource("Resource_qwr72"), SubResource("Resource_attup"), SubResource("Resource_svcpy"), SubResource("Resource_ao4p0")])
 
 [node name="Loot" type="Node2D" parent="." groups=["loot"]]
 
@@ -295,11 +354,7 @@ spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_7adbp"), SubResour
 position = Vector2(108, 5)
 experience = 5000
 
-[node name="sound_coin" type="AudioStreamPlayer" parent="Loot/ExperienceGem"]
-stream = ExtResource("8_qrrfi")
-volume_db = -35.657
-
 [node name="sound_world" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ywvlj")
-volume_db = -34.667
+volume_db = -18.0
 autoplay = true
