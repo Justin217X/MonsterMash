@@ -27,6 +27,7 @@ autostart = true
 
 [node name="sound_attack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_v7k4k")
+volume_db = -30.0
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

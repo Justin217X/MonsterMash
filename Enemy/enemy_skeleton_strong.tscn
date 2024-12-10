@@ -1,0 +1,212 @@
+[gd_scene load_steps=30 format=3 uid="uid://cxr1oaoxf8qpy"]
+
+[ext_resource type="Script" path="res://Enemy/enemy.gd" id="1_j4fut"]
+[ext_resource type="Texture2D" uid="uid://cipusk6dgkhg4" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Attack_1.png" id="2_2xp8j"]
+[ext_resource type="Texture2D" uid="uid://c3lsnd4d7vo5v" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Dead.png" id="3_myhdx"]
+[ext_resource type="Texture2D" uid="uid://btpukxhwo11kv" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Hurt.png" id="4_4jh3r"]
+[ext_resource type="Texture2D" uid="uid://blsi2i8wy51by" path="res://assets/Sprites/Enemies/Skeletons/Skeleton_Warrior/Idle.png" id="5_ej5ca"]
+[ext_resource type="PackedScene" uid="uid://bkemc1h4oq8c2" path="res://Utility/hurt_box.tscn" id="6_ox2kb"]
+[ext_resource type="PackedScene" uid="uid://cdhtocyxyibfu" path="res://Utility/hit_box.tscn" id="7_j4nrh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhtm3"]
+atlas = ExtResource("2_2xp8j")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot2ks"]
+atlas = ExtResource("2_2xp8j")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldvwr"]
+atlas = ExtResource("2_2xp8j")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkshi"]
+atlas = ExtResource("2_2xp8j")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w17g5"]
+atlas = ExtResource("2_2xp8j")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckw6o"]
+atlas = ExtResource("3_myhdx")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4hj2"]
+atlas = ExtResource("3_myhdx")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4ksn"]
+atlas = ExtResource("3_myhdx")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ou15"]
+atlas = ExtResource("3_myhdx")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlrq4"]
+atlas = ExtResource("4_4jh3r")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1br8"]
+atlas = ExtResource("4_4jh3r")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_646u3"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6wa3"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2qn2"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1axdx"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cdhkl"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7vwe"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vshqk"]
+atlas = ExtResource("5_ej5ca")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_udi87"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhtm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot2ks")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldvwr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkshi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w17g5")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckw6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4hj2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4ksn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ou15")
+}],
+"loop": true,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlrq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1br8")
+}],
+"loop": true,
+"name": &"Hurt",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_646u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6wa3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2qn2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1axdx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cdhkl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7vwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vshqk")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yngk0"]
+radius = 12.0
+height = 48.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v5yx"]
+size = Vector2(40, 58)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tg5pc"]
+size = Vector2(36, 52)
+
+[node name="enemy_skeleton_strong" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_j4fut")
+movement_speed = 28.0
+hp = 20
+damage = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.463557, 0.0341761, 0.159659, 1)
+sprite_frames = SubResource("SpriteFrames_udi87")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 1
+frame_progress = 0.165995
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 38)
+shape = SubResource("CapsuleShape2D_yngk0")
+
+[node name="HurtBox" parent="." instance=ExtResource("6_ox2kb")]
+collision_mask = 4
+HurtBoxType = 1
+
+[node name="CollisionShape2D" parent="HurtBox" index="0"]
+visible = false
+position = Vector2(-6, 35)
+shape = SubResource("RectangleShape2D_0v5yx")
+
+[node name="HitBox" parent="." instance=ExtResource("7_j4nrh")]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+visible = false
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_tg5pc")
+
+[connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]
+
+[editable path="HurtBox"]
+[editable path="HitBox"]

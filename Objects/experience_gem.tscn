@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://0tdkfmm1y551"]
+[gd_scene load_steps=8 format=3 uid="uid://0tdkfmm1y551"]
 
 [ext_resource type="Script" path="res://Objects/experience_gem.gd" id="1_8mxwk"]
 [ext_resource type="Texture2D" uid="uid://crsum41fhae7g" path="res://assets/green_gem.png" id="2_nwg5u"]
+[ext_resource type="AudioStream" uid="uid://dnxx07fud8vjs" path="res://assets/Sounds/pickupCoin.wav" id="3_kgvjp"]
 
 [sub_resource type="Animation" id="Animation_3k6uu"]
 resource_name = "GemShine"
@@ -64,5 +65,7 @@ autoplay = "GemShine"
 shape = SubResource("RectangleShape2D_018rn")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kgvjp")
+volume_db = -20.0
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
