@@ -98,7 +98,7 @@ height = 76.0
 size = Vector2(40, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tg5pc"]
-size = Vector2(40, 72)
+size = Vector2(78.6667, 72)
 
 [node name="enemy_werewolf" type="CharacterBody2D"]
 texture_filter = 1
@@ -109,7 +109,7 @@ script = ExtResource("1_4a2cp")
 movement_speed = 40.0
 hp = 300
 experience = 100
-damage = 8
+enemy_damage = 8
 knockback_recovery = 20.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -132,7 +132,7 @@ shape = SubResource("RectangleShape2D_0v5yx")
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(12, 4)
+position = Vector2(6, 4)
 shape = SubResource("RectangleShape2D_tg5pc")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

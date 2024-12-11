@@ -112,7 +112,7 @@ height = 80.0
 size = Vector2(28, 78.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tg5pc"]
-size = Vector2(26, 78)
+size = Vector2(26, 79.3333)
 
 [node name="enemy_gorgon" type="CharacterBody2D"]
 texture_filter = 1
@@ -123,7 +123,7 @@ script = ExtResource("1_t3e0i")
 movement_speed = 16.0
 hp = 100
 experience = 5
-damage = 5
+enemy_damage = 5
 knockback_recovery = 10.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -145,7 +145,7 @@ shape = SubResource("RectangleShape2D_0v5yx")
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-position = Vector2(-1, 5)
+position = Vector2(-1, 5.66667)
 shape = SubResource("RectangleShape2D_tg5pc")
 
 [connection signal="hurt" from="HurtBox" to="." method="_on_hurt_box_hurt"]

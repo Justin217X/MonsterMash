@@ -109,7 +109,7 @@ script = ExtResource("1_u35a2")
 movement_speed = 150.0
 hp = 9999
 experience = 100
-damage = 20
+enemy_damage = 20
 knockback_recovery = 99999.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

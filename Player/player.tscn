@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://d1gjhqwn3oxaj"]
+[gd_scene load_steps=26 format=3 uid="uid://d1gjhqwn3oxaj"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_7okhk"]
 [ext_resource type="Texture2D" uid="uid://g3cef5jl6ki7" path="res://assets/Sprites/PlayerCharacters/1 Woodcutter/Woodcutter_idle.png" id="2_4n5x1"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b0f7jvgjtk2f6" path="res://assets/exp_progress.png" id="5_cxs43"]
 [ext_resource type="Texture2D" uid="uid://be4f2gplxvt07" path="res://assets/Sprites/GUI/healthbar.png" id="7_nubmw"]
 [ext_resource type="Texture2D" uid="uid://cpekmodybllb1" path="res://assets/Sprites/GUI/health.png" id="8_2s2qg"]
+[ext_resource type="PackedScene" uid="uid://maq6053u7y2v" path="res://Utility/basic_button.tscn" id="9_ifxvw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f5a4j"]
 atlas = ExtResource("2_4n5x1")
@@ -243,6 +244,45 @@ offset_bottom = 100.0
 
 [node name="sound_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
 unique_name_in_owner = true
+
+[node name="DeathPanel" type="Panel" parent="GUILayer/GUI"]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.345
+anchor_top = -0.786
+anchor_right = 0.345
+anchor_bottom = -0.786
+offset_left = 0.199982
+offset_top = -0.0400085
+offset_right = 200.2
+offset_bottom = 249.96
+
+[node name="Label_Result" type="Label" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Result"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="sound_victory" type="AudioStreamPlayer" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+
+[node name="sound_lose" type="AudioStreamPlayer" parent="GUILayer/GUI/DeathPanel"]
+unique_name_in_owner = true
+
+[node name="btn_menu" parent="GUILayer/GUI/DeathPanel" instance=ExtResource("9_ifxvw")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 60.0
+offset_top = 200.0
+offset_right = 140.0
+offset_bottom = 231.0
+text = "Menu"
 
 [node name="Label_Timer" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true

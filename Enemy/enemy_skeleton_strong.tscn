@@ -175,7 +175,7 @@ collision_mask = 5
 script = ExtResource("1_j4fut")
 movement_speed = 28.0
 hp = 20
-damage = 2
+enemy_damage = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 modulate = Color(0.463557, 0.0341761, 0.159659, 1)
