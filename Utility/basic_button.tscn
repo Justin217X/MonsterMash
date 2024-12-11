@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://maq6053u7y2v"]
+
+[ext_resource type="Script" path="res://Utility/basic_button.gd" id="1_ienki"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(80, 30)
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Example"
+script = ExtResource("1_ienki")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
