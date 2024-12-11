@@ -98,7 +98,7 @@ animations = [{
 size = Vector2(120, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnahh"]
-size = Vector2(95, 156)
+size = Vector2(120, 180)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhmwj"]
 radius = 664.019
@@ -130,7 +130,7 @@ shape = SubResource("RectangleShape2D_2jeav")
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, 2)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_hnahh")
 
 [node name="Attack" type="Node2D" parent="."]

@@ -34,6 +34,7 @@ offset_left = 39.0
 offset_top = 2.0
 offset_right = 89.0
 offset_bottom = 25.0
+theme_override_font_sizes/font_size = 12
 text = "Name"
 horizontal_alignment = 1
 
@@ -43,7 +44,7 @@ offset_left = 4.0
 offset_top = 27.0
 offset_right = 166.0
 offset_bottom = 48.0
-theme_override_font_sizes/font_size = 8
+theme_override_font_sizes/font_size = 6
 text = "Description of Item"
 autowrap_mode = 3
 
@@ -53,7 +54,7 @@ offset_left = 130.0
 offset_top = 3.0
 offset_right = 171.0
 offset_bottom = 26.0
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Level: 1"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
