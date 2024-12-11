@@ -343,7 +343,6 @@ environment = SubResource("Environment_707ka")
 [node name="Background" type="Sprite2D" parent="."]
 
 [node name="Player" parent="." instance=ExtResource("1_pwy3b")]
-position = Vector2(0, 0)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("2_kag20")]
 spawns = Array[ExtResource("3_h5bwr")]([SubResource("Resource_ds8ni"), SubResource("Resource_wcrpj"), SubResource("Resource_6p5p6"), SubResource("Resource_scmr4"), SubResource("Resource_l1v80"), SubResource("Resource_qwr72"), SubResource("Resource_attup"), SubResource("Resource_svcpy"), SubResource("Resource_ao4p0")])

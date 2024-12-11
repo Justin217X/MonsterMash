@@ -94,10 +94,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2jeav"]
-size = Vector2(120, 120)
+size = Vector2(120, 176)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hnahh"]
-size = Vector2(95, 123)
+size = Vector2(95, 156)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mhmwj"]
 radius = 664.019
@@ -108,7 +108,6 @@ radius = 50.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_p38sh"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-position = Vector2(12, -15)
 scale = Vector2(0.25, 0.25)
 motion_mode = 1
 script = ExtResource("1_7okhk")
@@ -117,20 +116,20 @@ script = ExtResource("1_7okhk")
 position = Vector2(48, -48)
 scale = Vector2(6.08333, 5.58333)
 sprite_frames = SubResource("SpriteFrames_4f2f5")
-animation = &"Walking"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_2jeav")
 
 [node name="HurtBox" parent="." instance=ExtResource("3_pr3sp")]
 collision_mask = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0"]
-position = Vector2(0.5, -0.5)
+position = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_hnahh")
 
 [node name="Attack" type="Node2D" parent="."]
@@ -323,5 +322,6 @@ columns = 10
 [connection signal="body_exited" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_body_exited"]
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="CollectArea" to="." method="_on_collect_area_area_entered"]
+[connection signal="click_end" from="GUILayer/GUI/DeathPanel/btn_menu" to="." method="_on_btn_menu_click_end"]
 
 [editable path="HurtBox"]

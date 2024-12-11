@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://n1iunu2rvpi7"]
+
+[ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_t5wb5"]
+[ext_resource type="PackedScene" uid="uid://maq6053u7y2v" path="res://Utility/basic_button.tscn" id="2_ejfua"]
+[ext_resource type="Texture2D" uid="uid://bija26nf0mtnu" path="res://assets/Sprites/GUI/MMbackground-min.png" id="2_ukki6"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t5wb5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2880.0
+offset_bottom = 1502.0
+scale = Vector2(0.24, 0.24)
+texture = ExtResource("2_ukki6")
+
+[node name="btn_Play" parent="." instance=ExtResource("2_ejfua")]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 274.0
+offset_right = 280.0
+offset_bottom = 305.0
+text = "Play"
+
+[node name="btn_Quit" parent="." instance=ExtResource("2_ejfua")]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 274.0
+offset_right = 490.0
+offset_bottom = 305.0
+text = "Exit"
+
+[connection signal="click_end" from="btn_Play" to="." method="_on_button_play_click_end"]
+[connection signal="click_end" from="btn_Quit" to="." method="_on_button_quit_click_end"]

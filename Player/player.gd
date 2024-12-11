@@ -357,3 +357,8 @@ func death():
 	else:
 		lblResult.text = "You Lose :("
 		snd_Lose.play()
+
+
+func _on_btn_menu_click_end() -> void:
+	get_tree().paused = false
+	var _level = get_tree().change_scene_to_file("res://TitleScreen/menu.tscn")
