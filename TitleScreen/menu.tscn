@@ -26,7 +26,8 @@ offset_left = 200.0
 offset_top = 274.0
 offset_right = 280.0
 offset_bottom = 305.0
-text = "Play"
+text = "PLAY GAME
+"
 
 [node name="btn_Quit" parent="." instance=ExtResource("2_ejfua")]
 layout_mode = 0
@@ -34,7 +35,7 @@ offset_left = 410.0
 offset_top = 274.0
 offset_right = 490.0
 offset_bottom = 305.0
-text = "Exit"
+text = "EXIT GAME"
 
 [connection signal="click_end" from="btn_Play" to="." method="_on_button_play_click_end"]
 [connection signal="click_end" from="btn_Quit" to="." method="_on_button_quit_click_end"]
